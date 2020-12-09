@@ -1,0 +1,1984 @@
+[22;0t]0;IPython: github/Auto_EDA_and_Modeling
+-------------------------
+
+The Data have:
+	150568 rows
+	113 columns
+
+
+-------------------------
+
+Columns types distribution:
+
+object     81
+int64      24
+float64     8
+dtype: int64
+
+
+-------------------------
+
+[31mThere are 11 (out of 113, [10%]) columns that contains 1 or more NA.[0m
+
+-------------------------
+
+[31m11 NA_indicator variables added to the data
+[0m
+========= NA Graphs =========
+
+
+-------------------------
+
+NA columns data type Distribution:
+
+object     9
+float64    2
+dtype: int64
+
+-------------------------
+
+NaN Ratio (0-100)
+
+ TRANSPORTATION                              0.002657
+ MONTHLY RENT                                0.007306
+ FARM NAME                                   0.018596
+ LEGAL STATUS                                0.257027
+FARM DESCRIPTION                            14.009617
+ TYPE OF IRRIGATION                         18.966846
+ LEASE OR RENT / ACRE                       19.935843
+ BRIEF DESCRIPTION OF NATURE OF BUSINESS    26.346900
+ ESTABLISHED SINCE (MONTH)                  40.314675
+ NET MONTHLY INCOME                         59.281521
+ OWNERSHIP STATUS                           59.738457
+dtype: float64
+
+-------------------------
+
+(Before Missing values treatment)
+There are 359676 Missing values:
+	359661 in catagorical variables
+	15 in numerical columns
+	0.0 in others
+
+(After filling numeric missing values)
+There are 359661 Missing values:
+	359661 in catagorical variables
+	0 in numerical columns
+	0.0 in others
+
+-------------------------
+
+[31mThere are 22 variables That have only one unique value, so we droped those.
+Dropped columns names (in order):[0m
+ BUSINESS PREMISES RENTED/OWNED
+ BUSINESS SECTOR
+ DATE OF BIRTH OF CO-BORROWER
+ EMPLOYER / COMPANY NAME / BUSINESS NAME
+ IF, CASH REQUIRED, PURPOSE
+ INSTALLMENTS PER MONTH
+ MARITIAL STATUS CO-BORROWER
+ MONTHLY EXPENSES
+ MONTHLY INSTALLMENT
+ NAME OF CO-BORROWER
+ NAME OF GUARANTOR
+ NET BUSINESS INCOME
+ NO. OF DEPENDENTS OF CO-BORROWER
+ NO. OF EMPLOYEES
+ PRESENT VEHICLE
+ PURPOSE OF LOAN
+ REFERENCEE NAME
+ RELATION SHIP WITH GURANTOR
+ RESIDENCE STATUS OF CO-BORROWER
+ TOTAL MONTHLY INCOME
+ VEHICLE IS
+ VEHICLE MAKE
+
+-------------------------
+
+
+Now The Data have:
+	150568 rows
+	102 columns
+
+
+-------------------------
+
+[31mAdded 26 String Features (Extracted from numerical variables)[0m
+
+-------------------------
+
+[31mThe column < TYPE OF FACILITY (Secured/Unsecured)> have imbalanced, so we droped it, it has 2 unique values, and most commont value frequency ratio is 0.9999800754476382[0m
+
+-------------------------
+
+[31mThe column < UTILIZATION OF LOAN> have imbalanced, so we droped it, it has 3 unique values, and most commont value frequency ratio is 0.9999867169650922[0m
+
+-------------------------
+
+[31mThe column < LAND & BUILDING OWNERSHIP> have imbalanced, so we droped it, it has 3 unique values, and most commont value frequency ratio is 0.9999535093778227[0m
+
+-------------------------
+
+[31mThe column < LOAN UTILIZATION PURPOSE> have imbalanced, so we droped it, it has 5 unique values, and most commont value frequency ratio is 0.9999601508952766[0m
+
+-------------------------
+
+[31mThe column < TRANSPORTATION_NA_indicator> have imbalanced, so we droped it, it has 2 unique values, and most commont value frequency ratio is 0.9999734339301843[0m
+
+-------------------------
+
+<Rare case> catagory:
+                                                     Count    Ratio
+ProductDescription                                    22.0   0.0146
+ OCCUPATION/PROFESSION                                27.0   0.0179
+ TOTAL LAND OWERSHIP (ACRES)                          46.0   0.0306
+ IF YES, GUARANTEE AMOUNT                             58.0   0.0385
+ COMMITTEE INSTALLMENT                                97.0   0.0644
+ LAND LEASED (ACRES)                                  98.0   0.0651
+ LAND OWNED (ACRES)                                  105.0   0.0697
+ LEGAL STATUS                                        110.0   0.0731
+ FOOD & ENTERTAINMENT                                128.0   0.0850
+ REPAIR & MAINTENANCE                                138.0   0.0917
+ ACCOUNT PAYABLES_str                                143.0   0.0950
+ UTILITY BILLS (ELECTRICITY, GAS, WATER, PHONE).1    144.0   0.0956
+ UTILTIES (ELECTRICITY, GAS, WATER, PHONE)           180.0   0.1195
+ TRANSPORTATION_str                                  183.0   0.1215
+ OTHER BUSINESS INCOMES                              190.0   0.1262
+ EDUCATIONAL _str                                    197.0   0.1308
+ LEASE OR RENT / ACRE                                200.0   0.1328
+ MONTHLY RENT_str                                    201.0   0.1335
+ OTHER LIABILITIES_str                               208.0   0.1381
+ ACCOUNT RECEIVABLES_str                             234.0   0.1554
+ UTILITY BILLS ( ELECTRICITY, GAS, WATER, PHONE)     239.0   0.1587
+ UTILITY BILLS (ELECTRICITY, GAS, WATER, PHONE)      251.0   0.1667
+ LIVING (FOOD, CLOTHING, MEDICAL & ECT.)             314.0   0.2085
+ TOTAL LOAN AMOUNT                                   343.0   0.2278
+ EQUIPMENT & MACHINERY_str                           375.0   0.2491
+ FURNITURE & FIXTURES_str                            421.0   0.2796
+ SALARY & WAGES_str                                  427.0   0.2836
+ NATURE OF BUSINESS                                  461.0   0.3062
+HOUSEHOLD NET WORTH                                  519.0   0.3447
+ CASH IN HAND / AT BANK_str                          564.0   0.3746
+ ESTABLISHED SINCE (MONTH)                           583.0   0.3872
+TOTAL HOUSEHOLD ASSETS                               627.0   0.4164
+TOTAL MONTHLY HOUSEHOLD INCOME                       650.0   0.4317
+ INVENTORY_str                                       691.0   0.4589
+HOUSEHOLD NET WORTH.1                                708.0   0.4702
+ LAND & BUILDING_str                                 767.0   0.5094
+ ANY OTHER INCOME_str                                790.0   0.5247
+TOTAL MONTHLY HOUSE HOLD INCOMES                     797.0   0.5293
+ FARM ANIMALS_str                                    847.0   0.5625
+ LIVESTOCK PURCHASES                                 860.0   0.5712
+ OTHER HOUSEHOLD EXPENSES_str                        877.0   0.5825
+ PROVISIONAL HOUSEHOLD EXPENSES                      962.0   0.6389
+ LOAN AMOUNT_str                                    1055.0   0.7007
+ LIVESTOCK SALES                                    1116.0   0.7412
+ SALE - MILK                                        1138.0   0.7558
+ PURCHASES                                          1548.0   1.0281
+ HOUSEHOLD NET WORTH_str                            1782.0   1.1835
+ INSTALLMENT / MIN PAYMENT_str                      2154.0   1.4306
+TOTAL HOUSEHOLD EXPENSES_str                        2408.0   1.5993
+ PROVISIONAL BUSINESS EXPENSE                       2819.0   1.8722
+TOTAL LIVESTOCK INCOMES_str                         2918.0   1.9380
+ LOAN INSTALLMENT / PAYMENTS_str                    2944.0   1.9553
+TOTAL MONTHLY HOUSEHOLD EXPENSES_str                2959.0   1.9652
+FARM DESCRIPTION                                    2970.0   1.9725
+ NET MONTHLY INCOME                                 3272.0   2.1731
+ OUTSTANDING AMOUNT_str                             3733.0   2.4793
+ CROP SALES                                         4565.0   3.0319
+ SALES                                              4847.0   3.2191
+NET MONTHLY LIVESTOCK INCOME                        5162.0   3.4284
+TOTAL HOUSE HOLD INCOMES                            5276.0   3.5041
+ BRIEF DESCRIPTION OF NATURE OF BUSINESS            6945.0   4.6125
+ PROVISIONAL LIVESTOCK EXPENSE                      6958.0   4.6212
+NET HOUSE HOLD INCOME                               7210.0   4.7885
+TOTAL LIVESTOCK EXPENSES_str                        9236.0   6.1341
+NET BUSINESS INCOME                                10825.0   7.1894
+NET ANNUAL LIVESTOCK & AGRI INCOME                 15962.0  10.6012
+NET LIVESTOCK & AGRI INCOME FOR TENURE             16223.0  10.7745
+NET DISPOSABLE INCOME FOR TENURE                   19095.0  12.6820
+ FARM NAME                                         30069.0  19.9704
+ DATE OF BIRTH (DD/MM/YYYY)                        62480.0  41.4962
+[31m
+
+
+========================================= ProductDescription =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     150568  100.0000
+Nunique                       28    0.0186
+Len                       150568       NaN
+NA                             0    0.0000
+Most frequent              47891   31.8069
+Least frequent                10    0.0066
+Values occured only once       0    0.0000
+[31m
+
+
+========================================= Status =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     150568  100.0000
+Nunique                        2    0.0013
+Len                       150568       NaN
+NA                             0    0.0000
+Most frequent             100213   66.5566
+Least frequent             50355   33.4434
+Values occured only once       0    0.0000
+[31m
+
+
+=========================================  FARM NAME =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     150540  100.0000
+Nunique                      350    0.2325
+Len                       150568       NaN
+NA                            28    0.0186
+Most frequent             105334   69.9708
+Least frequent                10    0.0066
+Values occured only once       0    0.0000
+
+-------------------------
+
+[31mCase issue
+	in orignal variable There are 350 unique values
+	in lower verstion there are   322 unique values.
+[0m
+
+-------------------------
+
+[31mSpace issue
+	in orignal variable There are 350 unique values
+	in striped verstion there are 342 unique values.[0m
+[31m
+
+
+========================================= FARM DESCRIPTION =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     129474  100.0000
+Nunique                      200    0.1545
+Len                       150568       NaN
+NA                         21094   16.2921
+Most frequent             110348   85.2279
+Least frequent                10    0.0077
+Values occured only once       0    0.0000
+
+-------------------------
+
+[31mCase issue
+	in orignal variable There are 200 unique values
+	in lower verstion there are   153 unique values.
+[0m
+
+-------------------------
+
+[31mSpace issue
+	in orignal variable There are 200 unique values
+	in striped verstion there are 187 unique values.[0m
+[31m
+
+
+=========================================  TOTAL LAND OWERSHIP (ACRES) =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     150568  100.0000
+Nunique                       19    0.0126
+Len                       150568       NaN
+NA                             0    0.0000
+Most frequent             143228   95.1251
+Least frequent                10    0.0066
+Values occured only once       0    0.0000
+[31m
+
+
+=========================================  TYPE OF FACILITY (EMI/Bullet) =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     150568  100.0000
+Nunique                        2    0.0013
+Len                       150568       NaN
+NA                             0    0.0000
+Most frequent              77475   51.4552
+Least frequent             73093   48.5448
+Values occured only once       0    0.0000
+[31m
+
+
+=========================================  PROVISIONAL BUSINESS EXPENSE =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     150568  100.0000
+Nunique                      200    0.1328
+Len                       150568       NaN
+NA                             0    0.0000
+Most frequent             135418   89.9381
+Least frequent                10    0.0066
+Values occured only once       0    0.0000
+[31m
+
+
+========================================= NET LIVESTOCK & AGRI INCOME FOR TENURE =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     150568  100.0000
+Nunique                       37    0.0246
+Len                       150568       NaN
+NA                             0    0.0000
+Most frequent             133757   88.8349
+Least frequent                10    0.0066
+Values occured only once       0    0.0000
+[31m
+
+
+========================================= HOUSEHOLD NET WORTH =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     150568  100.0000
+Nunique                       54    0.0359
+Len                       150568       NaN
+NA                             0    0.0000
+Most frequent             143213   95.1152
+Least frequent                10    0.0066
+Values occured only once       0    0.0000
+[31m
+
+
+========================================= TOTAL HOUSE HOLD INCOMES =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     150568  100.0000
+Nunique                      148    0.0983
+Len                       150568       NaN
+NA                             0    0.0000
+Most frequent             143213   95.1152
+Least frequent                10    0.0066
+Values occured only once       0    0.0000
+[31m
+
+
+========================================= NET HOUSE HOLD INCOME =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     150568  100.0000
+Nunique                       15    0.0100
+Len                       150568       NaN
+NA                             0    0.0000
+Most frequent             143213   95.1152
+Least frequent                10    0.0066
+Values occured only once       0    0.0000
+[31m
+
+
+=========================================  LAND OWNED (ACRES) =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     150568  100.0000
+Nunique                       35    0.0232
+Len                       150568       NaN
+NA                             0    0.0000
+Most frequent             101890   67.6704
+Least frequent                13    0.0086
+Values occured only once       0    0.0000
+[31m
+
+
+=========================================  LAND LEASED (ACRES) =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     150568  100.0000
+Nunique                       33    0.0219
+Len                       150568       NaN
+NA                             0    0.0000
+Most frequent             104287   69.2624
+Least frequent                11    0.0073
+Values occured only once       0    0.0000
+[31m
+
+
+========================================= NET ANNUAL LIVESTOCK & AGRI INCOME =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     150568  100.0000
+Nunique                       50    0.0332
+Len                       150568       NaN
+NA                             0    0.0000
+Most frequent             133757   88.8349
+Least frequent                10    0.0066
+Values occured only once       0    0.0000
+[31m
+
+
+=========================================  PROVISIONAL LIVESTOCK EXPENSE =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     150568  100.0000
+Nunique                      366    0.2431
+Len                       150568       NaN
+NA                             0    0.0000
+Most frequent             133757   88.8349
+Least frequent                10    0.0066
+Values occured only once       0    0.0000
+[31m
+
+
+=========================================  PROVISIONAL HOUSEHOLD EXPENSES =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     150568  100.0000
+Nunique                      108    0.0717
+Len                       150568       NaN
+NA                             0    0.0000
+Most frequent             143213   95.1152
+Least frequent                10    0.0066
+Values occured only once       0    0.0000
+[31m
+
+
+========================================= HOUSEHOLD NET WORTH.1 =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     150568  100.0000
+Nunique                       72    0.0478
+Len                       150568       NaN
+NA                             0    0.0000
+Most frequent             135431   89.9467
+Least frequent                10    0.0066
+Values occured only once       0    0.0000
+[31m
+
+
+========================================= NET BUSINESS INCOME =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     150568  100.0000
+Nunique                      209    0.1388
+Len                       150568       NaN
+NA                             0    0.0000
+Most frequent             135418   89.9381
+Least frequent                10    0.0066
+Values occured only once       0    0.0000
+[31m
+
+
+=========================================  OWNERSHIP STATUS =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                      60621  100.0000
+Nunique                        6    0.0099
+Len                       150568       NaN
+NA                         89947  148.3760
+Most frequent              45159   74.4940
+Least frequent                12    0.0198
+Values occured only once       0    0.0000
+[31m
+
+
+=========================================  DATE OF BIRTH (DD/MM/YYYY) =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     150568  100.0000
+Nunique                     1454    0.9657
+Len                       150568       NaN
+NA                             0    0.0000
+Most frequent              62480   41.4962
+Least frequent                10    0.0066
+Values occured only once       0    0.0000
+[31m
+
+
+=========================================  GENDER =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     150568  100.0000
+Nunique                        5    0.0033
+Len                       150568       NaN
+NA                             0    0.0000
+Most frequent              84944   56.4157
+Least frequent               133    0.0883
+Values occured only once       0    0.0000
+[31m
+
+
+=========================================  MARITAL STATUS =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     150568  100.0000
+Nunique                        6    0.0040
+Len                       150568       NaN
+NA                             0    0.0000
+Most frequent              89947   59.7385
+Least frequent                13    0.0086
+Values occured only once       0    0.0000
+[31m
+
+
+=========================================  LEASE OR RENT / ACRE =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     120551  100.0000
+Nunique                       38    0.0315
+Len                       150568       NaN
+NA                         30017   24.8998
+Most frequent             107675   89.3190
+Least frequent                10    0.0083
+Values occured only once       0    0.0000
+[31m
+
+
+=========================================  NATURE OF BUSINESS =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     150568  100.0000
+Nunique                       76    0.0505
+Len                       150568       NaN
+NA                             0    0.0000
+Most frequent              97840   64.9806
+Least frequent                10    0.0066
+Values occured only once       0    0.0000
+
+-------------------------
+
+[31mSpace issue
+	in orignal variable There are 76 unique values
+	in striped verstion there are 67 unique values.[0m
+[31m
+
+
+=========================================  BRIEF DESCRIPTION OF NATURE OF BUSINESS =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     110898  100.0000
+Nunique                      140    0.1262
+Len                       150568       NaN
+NA                         39670   35.7716
+Most frequent              95745   86.3361
+Least frequent                10    0.0090
+Values occured only once       0    0.0000
+
+-------------------------
+
+[31mCase issue
+	in orignal variable There are 140 unique values
+	in lower verstion there are   102 unique values.
+[0m
+
+-------------------------
+
+[31mSpace issue
+	in orignal variable There are 140 unique values
+	in striped verstion there are 131 unique values.[0m
+[31m
+
+
+=========================================  TYPE OF IRRIGATION =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     122010  100.0000
+Nunique                        5    0.0041
+Len                       150568       NaN
+NA                         28558   23.4063
+Most frequent             100886   82.6867
+Least frequent               200    0.1639
+Values occured only once       0    0.0000
+
+-------------------------
+
+[31mCase issue
+	in orignal variable There are 5 unique values
+	in lower verstion there are   3 unique values.
+[0m
+[31m
+
+
+=========================================  OCCUPATION/PROFESSION =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     150568  100.0000
+Nunique                        8    0.0053
+Len                       150568       NaN
+NA                             0    0.0000
+Most frequent             123449   81.9889
+Least frequent                27    0.0179
+Values occured only once       0    0.0000
+[31m
+
+
+=========================================  TOTAL LOAN AMOUNT =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     150568  100.0000
+Nunique                       62    0.0412
+Len                       150568       NaN
+NA                             0    0.0000
+Most frequent             108834   72.2823
+Least frequent                10    0.0066
+Values occured only once       0    0.0000
+[31m
+
+
+=========================================  COMMITTEE INSTALLMENT =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     150568  100.0000
+Nunique                       13    0.0086
+Len                       150568       NaN
+NA                             0    0.0000
+Most frequent             135498   89.9912
+Least frequent                10    0.0066
+Values occured only once       0    0.0000
+[31m
+
+
+=========================================  NO. OF DEPENDENTS =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     150568  100.0000
+Nunique                       74    0.0491
+Len                       150568       NaN
+NA                             0    0.0000
+Most frequent              44320   29.4352
+Least frequent                 1    0.0007
+Values occured only once      17    0.0113
+
+-------------------------
+
+[31mCase issue
+	in orignal variable There are 74 unique values
+	in lower verstion there are   19 unique values.
+[0m
+
+-------------------------
+
+[31mSpace issue
+	in orignal variable There are 74 unique values
+	in striped verstion there are 19 unique values.[0m
+[31m
+
+
+=========================================  QUALIFICATION =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     150568  100.0000
+Nunique                       21    0.0139
+Len                       150568       NaN
+NA                             0    0.0000
+Most frequent              41019   27.2428
+Least frequent                91    0.0604
+Values occured only once       0    0.0000
+
+-------------------------
+
+[31mCase issue
+	in orignal variable There are 21 unique values
+	in lower verstion there are   15 unique values.
+[0m
+
+-------------------------
+
+[31mSpace issue
+	in orignal variable There are 21 unique values
+	in striped verstion there are 14 unique values.[0m
+[31m
+
+
+=========================================  CURRENT ADDRESS SINCE (MONTH) =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     150568  100.0000
+Nunique                      987    0.6555
+Len                       150568       NaN
+NA                             0    0.0000
+Most frequent              17512   11.6306
+Least frequent                 1    0.0007
+Values occured only once     226    0.1501
+
+-------------------------
+
+[31mCase issue
+	in orignal variable There are 987 unique values
+	in lower verstion there are   204 unique values.
+[0m
+
+-------------------------
+
+[31mSpace issue
+	in orignal variable There are 987 unique values
+	in striped verstion there are 204 unique values.[0m
+[31m
+
+
+=========================================  HAVE YOU GUARANTEED ANY LOAN? =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     150568  100.0000
+Nunique                        3    0.0020
+Len                       150568       NaN
+NA                             0    0.0000
+Most frequent              90025   59.7903
+Least frequent               791    0.5253
+Values occured only once       0    0.0000
+[31m
+
+
+=========================================  IF YES, GUARANTEE AMOUNT  =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     150568  100.0000
+Nunique                        9    0.0060
+Len                       150568       NaN
+NA                             0    0.0000
+Most frequent             117220   77.8519
+Least frequent                11    0.0073
+Values occured only once       0    0.0000
+[31m
+
+
+=========================================  SALES  =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     150568  100.0000
+Nunique                      316    0.2099
+Len                       150568       NaN
+NA                             0    0.0000
+Most frequent             135423   89.9414
+Least frequent                10    0.0066
+Values occured only once       0    0.0000
+[31m
+
+
+=========================================  OTHER BUSINESS INCOMES =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     150568  100.0000
+Nunique                       18    0.0120
+Len                       150568       NaN
+NA                             0    0.0000
+Most frequent             135519   90.0052
+Least frequent                10    0.0066
+Values occured only once       0    0.0000
+[31m
+
+
+=========================================  PURCHASES =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     150568  100.0000
+Nunique                      157    0.1043
+Len                       150568       NaN
+NA                             0    0.0000
+Most frequent             135435   89.9494
+Least frequent                10    0.0066
+Values occured only once       0    0.0000
+[31m
+
+
+=========================================  UTILITY BILLS (ELECTRICITY, GAS, WATER, PHONE) =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     150568  100.0000
+Nunique                       45    0.0299
+Len                       150568       NaN
+NA                             0    0.0000
+Most frequent             135445   89.9560
+Least frequent                10    0.0066
+Values occured only once       0    0.0000
+[31m
+
+
+=========================================  REPAIR & MAINTENANCE =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     150568  100.0000
+Nunique                       22    0.0146
+Len                       150568       NaN
+NA                             0    0.0000
+Most frequent             135493   89.9879
+Least frequent                10    0.0066
+Values occured only once       0    0.0000
+[31m
+
+
+=========================================  FOOD & ENTERTAINMENT =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     150568  100.0000
+Nunique                       31    0.0206
+Len                       150568       NaN
+NA                             0    0.0000
+Most frequent             135499   89.9919
+Least frequent                10    0.0066
+Values occured only once       0    0.0000
+[31m
+
+
+========================================= NET DISPOSABLE INCOME FOR TENURE =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     150568  100.0000
+Nunique                       32    0.0213
+Len                       150568       NaN
+NA                             0    0.0000
+Most frequent             130955   86.9740
+Least frequent                10    0.0066
+Values occured only once       0    0.0000
+[31m
+
+
+========================================= TOTAL HOUSEHOLD ASSETS  =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     150568  100.0000
+Nunique                       66    0.0438
+Len                       150568       NaN
+NA                             0    0.0000
+Most frequent             135468   89.9713
+Least frequent                10    0.0066
+Values occured only once       0    0.0000
+[31m
+
+
+=========================================  NET MONTHLY INCOME =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                      61309  100.0000
+Nunique                      162    0.2642
+Len                       150568       NaN
+NA                         89259  145.5887
+Most frequent               8727   14.2345
+Least frequent                10    0.0163
+Values occured only once       0    0.0000
+
+-------------------------
+
+[31mCase issue
+	in orignal variable There are 162 unique values
+	in lower verstion there are   141 unique values.
+[0m
+
+-------------------------
+
+[31mSpace issue
+	in orignal variable There are 162 unique values
+	in striped verstion there are 141 unique values.[0m
+[31m
+
+
+=========================================  SALE - MILK =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     150568  100.0000
+Nunique                      138    0.0917
+Len                       150568       NaN
+NA                             0    0.0000
+Most frequent             143213   95.1152
+Least frequent                10    0.0066
+Values occured only once       0    0.0000
+[31m
+
+
+========================================= NET MONTHLY LIVESTOCK INCOME =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     150568  100.0000
+Nunique                      157    0.1043
+Len                       150568       NaN
+NA                             0    0.0000
+Most frequent             143213   95.1152
+Least frequent                10    0.0066
+Values occured only once       0    0.0000
+[31m
+
+
+=========================================  UTILITY BILLS (ELECTRICITY, GAS, WATER, PHONE).1 =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     150568  100.0000
+Nunique                       32    0.0213
+Len                       150568       NaN
+NA                             0    0.0000
+Most frequent             143224   95.1225
+Least frequent                10    0.0066
+Values occured only once       0    0.0000
+[31m
+
+
+=========================================  LIVING (FOOD, CLOTHING, MEDICAL & ECT.) =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     150568  100.0000
+Nunique                       46    0.0306
+Len                       150568       NaN
+NA                             0    0.0000
+Most frequent             143215   95.1165
+Least frequent                10    0.0066
+Values occured only once       0    0.0000
+[31m
+
+
+=========================================  UTILTIES (ELECTRICITY, GAS, WATER, PHONE) =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     150568  100.0000
+Nunique                       33    0.0219
+Len                       150568       NaN
+NA                             0    0.0000
+Most frequent             143222   95.1211
+Least frequent                10    0.0066
+Values occured only once       0    0.0000
+[31m
+
+
+=========================================  LIVESTOCK SALES =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     150568  100.0000
+Nunique                      149    0.0990
+Len                       150568       NaN
+NA                             0    0.0000
+Most frequent             133762   88.8383
+Least frequent                10    0.0066
+Values occured only once       0    0.0000
+[31m
+
+
+=========================================  LIVESTOCK PURCHASES =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     150568  100.0000
+Nunique                      107    0.0711
+Len                       150568       NaN
+NA                             0    0.0000
+Most frequent             133772   88.8449
+Least frequent                10    0.0066
+Values occured only once       0    0.0000
+[31m
+
+
+=========================================  UTILITY BILLS ( ELECTRICITY, GAS, WATER, PHONE) =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     150568  100.0000
+Nunique                       50    0.0332
+Len                       150568       NaN
+NA                             0    0.0000
+Most frequent             133783   88.8522
+Least frequent                10    0.0066
+Values occured only once       0    0.0000
+[31m
+
+
+========================================= TOTAL MONTHLY HOUSE HOLD INCOMES =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     150568  100.0000
+Nunique                       73    0.0485
+Len                       150568       NaN
+NA                             0    0.0000
+Most frequent             133757   88.8349
+Least frequent                10    0.0066
+Values occured only once       0    0.0000
+[31m
+
+
+=========================================  LEGAL STATUS =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     150181  100.0000
+Nunique                       24    0.0160
+Len                       150568       NaN
+NA                           387    0.2577
+Most frequent              73928   49.2259
+Least frequent                11    0.0073
+Values occured only once       0    0.0000
+
+-------------------------
+
+[31mSpace issue
+	in orignal variable There are 24 unique values
+	in striped verstion there are 22 unique values.[0m
+[31m
+
+
+=========================================  ESTABLISHED SINCE (MONTH) =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                      89867  100.0000
+Nunique                      120    0.1335
+Len                       150568       NaN
+NA                         60701   67.5454
+Most frequent              50511   56.2064
+Least frequent                10    0.0111
+Values occured only once       0    0.0000
+[31m
+
+
+=========================================  CROP SALES =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     150568  100.0000
+Nunique                      325    0.2158
+Len                       150568       NaN
+NA                             0    0.0000
+Most frequent             130960   86.9773
+Least frequent                10    0.0066
+Values occured only once       0    0.0000
+[31m
+
+
+========================================= TOTAL MONTHLY HOUSEHOLD INCOME =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     150568  100.0000
+Nunique                       85    0.0565
+Len                       150568       NaN
+NA                             0    0.0000
+Most frequent             130955   86.9740
+Least frequent                10    0.0066
+Values occured only once       0    0.0000
+[31m
+
+
+=========================================  FARM NAME_NA_indicator =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     150568  100.0000
+Nunique                        2    0.0013
+Len                       150568       NaN
+NA                             0    0.0000
+Most frequent             150540   99.9814
+Least frequent                28    0.0186
+Values occured only once       0    0.0000
+[31m
+
+
+========================================= FARM DESCRIPTION_NA_indicator =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     150568  100.0000
+Nunique                        2    0.0013
+Len                       150568       NaN
+NA                             0    0.0000
+Most frequent             129474   85.9904
+Least frequent             21094   14.0096
+Values occured only once       0    0.0000
+[31m
+
+
+=========================================  MONTHLY RENT_NA_indicator =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     150568  100.0000
+Nunique                        2    0.0013
+Len                       150568       NaN
+NA                             0    0.0000
+Most frequent             150557   99.9927
+Least frequent                11    0.0073
+Values occured only once       0    0.0000
+[31m
+
+
+=========================================  OWNERSHIP STATUS_NA_indicator =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     150568  100.0000
+Nunique                        2    0.0013
+Len                       150568       NaN
+NA                             0    0.0000
+Most frequent              89947   59.7385
+Least frequent             60621   40.2615
+Values occured only once       0    0.0000
+[31m
+
+
+=========================================  LEASE OR RENT / ACRE_NA_indicator =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     150568  100.0000
+Nunique                        2    0.0013
+Len                       150568       NaN
+NA                             0    0.0000
+Most frequent             120551   80.0642
+Least frequent             30017   19.9358
+Values occured only once       0    0.0000
+[31m
+
+
+=========================================  BRIEF DESCRIPTION OF NATURE OF BUSINESS_NA_indicator =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     150568  100.0000
+Nunique                        2    0.0013
+Len                       150568       NaN
+NA                             0    0.0000
+Most frequent             110898   73.6531
+Least frequent             39670   26.3469
+Values occured only once       0    0.0000
+[31m
+
+
+=========================================  TYPE OF IRRIGATION_NA_indicator =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     150568  100.0000
+Nunique                        2    0.0013
+Len                       150568       NaN
+NA                             0    0.0000
+Most frequent             122010   81.0332
+Least frequent             28558   18.9668
+Values occured only once       0    0.0000
+[31m
+
+
+=========================================  NET MONTHLY INCOME_NA_indicator =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     150568  100.0000
+Nunique                        2    0.0013
+Len                       150568       NaN
+NA                             0    0.0000
+Most frequent              89259   59.2815
+Least frequent             61309   40.7185
+Values occured only once       0    0.0000
+[31m
+
+
+=========================================  LEGAL STATUS_NA_indicator =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     150568  100.0000
+Nunique                        2    0.0013
+Len                       150568       NaN
+NA                             0    0.0000
+Most frequent             150181   99.7430
+Least frequent               387    0.2570
+Values occured only once       0    0.0000
+[31m
+
+
+=========================================  ESTABLISHED SINCE (MONTH)_NA_indicator =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     150568  100.0000
+Nunique                        2    0.0013
+Len                       150568       NaN
+NA                             0    0.0000
+Most frequent              89867   59.6853
+Least frequent             60701   40.3147
+Values occured only once       0    0.0000
+[31m
+
+
+========================================= Sub_Proposal_No_str =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     150568  100.0000
+Nunique                       13    0.0086
+Len                       150568       NaN
+NA                             0    0.0000
+Most frequent              72870   48.3967
+Least frequent                18    0.0120
+Values occured only once       0    0.0000
+[31m
+
+
+========================================= UNIT_ID_str =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts    Ratio
+Count                     150568  100.000
+Nunique                      122    0.081
+Len                       150568      NaN
+NA                             0    0.000
+Most frequent              12723    8.450
+Least frequent                15    0.010
+Values occured only once       0    0.000
+[31m
+
+
+=========================================  MONTHLY RENT_str =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     150568  100.0000
+Nunique                       26    0.0173
+Len                       150568       NaN
+NA                             0    0.0000
+Most frequent             148673   98.7414
+Least frequent                10    0.0066
+Values occured only once       0    0.0000
+[31m
+
+
+========================================= TOTAL LIVESTOCK INCOMES_str =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     150568  100.0000
+Nunique                      289    0.1919
+Len                       150568       NaN
+NA                             0    0.0000
+Most frequent             126402   83.9501
+Least frequent                10    0.0066
+Values occured only once       0    0.0000
+[31m
+
+
+=========================================  FARM ANIMALS_str =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     150568  100.0000
+Nunique                      135    0.0897
+Len                       150568       NaN
+NA                             0    0.0000
+Most frequent             117201   77.8392
+Least frequent                10    0.0066
+Values occured only once       0    0.0000
+[31m
+
+
+=========================================  TRANSPORTATION_str =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     150568  100.0000
+Nunique                       53    0.0352
+Len                       150568       NaN
+NA                             0    0.0000
+Most frequent             134810   89.5343
+Least frequent                11    0.0073
+Values occured only once       0    0.0000
+[31m
+
+
+========================================= TOTAL LIVESTOCK EXPENSES_str =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     150568  100.0000
+Nunique                      503    0.3341
+Len                       150568       NaN
+NA                             0    0.0000
+Most frequent             126402   83.9501
+Least frequent                10    0.0066
+Values occured only once       0    0.0000
+[31m
+
+
+=========================================  ANY OTHER INCOME_str =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     150568  100.0000
+Nunique                       68    0.0452
+Len                       150568       NaN
+NA                             0    0.0000
+Most frequent             124155   82.4578
+Least frequent                11    0.0073
+Values occured only once       0    0.0000
+[31m
+
+
+=========================================  SALARY & WAGES_str =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     150568  100.0000
+Nunique                       54    0.0359
+Len                       150568       NaN
+NA                             0    0.0000
+Most frequent             141916   94.2538
+Least frequent                10    0.0066
+Values occured only once       0    0.0000
+[31m
+
+
+=========================================  HOUSEHOLD NET WORTH_str =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     150568  100.0000
+Nunique                      133    0.0883
+Len                       150568       NaN
+NA                             0    0.0000
+Most frequent             126549   84.0477
+Least frequent                10    0.0066
+Values occured only once       0    0.0000
+[31m
+
+
+=========================================  LOAN INSTALLMENT / PAYMENTS_str =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     150568  100.0000
+Nunique                       84    0.0558
+Len                       150568       NaN
+NA                             0    0.0000
+Most frequent             143400   95.2394
+Least frequent                10    0.0066
+Values occured only once       0    0.0000
+[31m
+
+
+=========================================  LOAN AMOUNT_str =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     150568  100.0000
+Nunique                       70    0.0465
+Len                       150568       NaN
+NA                             0    0.0000
+Most frequent             135915   90.2682
+Least frequent                10    0.0066
+Values occured only once       0    0.0000
+[31m
+
+
+=========================================  OUTSTANDING AMOUNT_str =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     150568  100.0000
+Nunique                       45    0.0299
+Len                       150568       NaN
+NA                             0    0.0000
+Most frequent             144935   96.2588
+Least frequent                10    0.0066
+Values occured only once       0    0.0000
+[31m
+
+
+=========================================  INSTALLMENT / MIN PAYMENT_str =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     150568  100.0000
+Nunique                       68    0.0452
+Len                       150568       NaN
+NA                             0    0.0000
+Most frequent             145548   96.6660
+Least frequent                10    0.0066
+Values occured only once       0    0.0000
+[31m
+
+
+=========================================  EDUCATIONAL _str =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     150568  100.0000
+Nunique                       34    0.0226
+Len                       150568       NaN
+NA                             0    0.0000
+Most frequent             123830   82.2419
+Least frequent                10    0.0066
+Values occured only once       0    0.0000
+[31m
+
+
+=========================================  OTHER HOUSEHOLD EXPENSES_str =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     150568  100.0000
+Nunique                       50    0.0332
+Len                       150568       NaN
+NA                             0    0.0000
+Most frequent             135373   89.9082
+Least frequent                11    0.0073
+Values occured only once       0    0.0000
+[31m
+
+
+========================================= TOTAL HOUSEHOLD EXPENSES_str =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     150568  100.0000
+Nunique                      246    0.1634
+Len                       150568       NaN
+NA                             0    0.0000
+Most frequent             128145   85.1077
+Least frequent                10    0.0066
+Values occured only once       0    0.0000
+[31m
+
+
+=========================================  INVENTORY_str =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     150568  100.0000
+Nunique                      103    0.0684
+Len                       150568       NaN
+NA                             0    0.0000
+Most frequent             122267   81.2038
+Least frequent                10    0.0066
+Values occured only once       0    0.0000
+[31m
+
+
+=========================================  ACCOUNT PAYABLES_str =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     150568  100.0000
+Nunique                        9    0.0060
+Len                       150568       NaN
+NA                             0    0.0000
+Most frequent             150231   99.7762
+Least frequent                12    0.0080
+Values occured only once       0    0.0000
+[31m
+
+
+=========================================  OTHER LIABILITIES_str =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     150568  100.0000
+Nunique                        5    0.0033
+Len                       150568       NaN
+NA                             0    0.0000
+Most frequent             150319   99.8346
+Least frequent                10    0.0066
+Values occured only once       0    0.0000
+[31m
+
+
+=========================================  LAND & BUILDING_str =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     150568  100.0000
+Nunique                      119    0.0790
+Len                       150568       NaN
+NA                             0    0.0000
+Most frequent             128664   85.4524
+Least frequent                10    0.0066
+Values occured only once       0    0.0000
+[31m
+
+
+=========================================  EQUIPMENT & MACHINERY_str =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     150568  100.0000
+Nunique                       69    0.0458
+Len                       150568       NaN
+NA                             0    0.0000
+Most frequent             133902   88.9312
+Least frequent                10    0.0066
+Values occured only once       0    0.0000
+[31m
+
+
+=========================================  ACCOUNT RECEIVABLES_str =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     150568  100.0000
+Nunique                       56    0.0372
+Len                       150568       NaN
+NA                             0    0.0000
+Most frequent             135740   90.1520
+Least frequent                10    0.0066
+Values occured only once       0    0.0000
+[31m
+
+
+=========================================  CASH IN HAND / AT BANK_str =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     150568  100.0000
+Nunique                       75    0.0498
+Len                       150568       NaN
+NA                             0    0.0000
+Most frequent             104473   69.3859
+Least frequent                10    0.0066
+Values occured only once       0    0.0000
+[31m
+
+
+=========================================  FURNITURE & FIXTURES_str =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     150568  100.0000
+Nunique                       74    0.0491
+Len                       150568       NaN
+NA                             0    0.0000
+Most frequent             123850   82.2552
+Least frequent                10    0.0066
+Values occured only once       0    0.0000
+[31m
+
+
+========================================= TOTAL MONTHLY HOUSEHOLD EXPENSES_str =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     150568  100.0000
+Nunique                      315    0.2092
+Len                       150568       NaN
+NA                             0    0.0000
+Most frequent             114144   75.8089
+Least frequent                10    0.0066
+Values occured only once       0    0.0000
+[31m
+
+
+========================================= Business_Proposal_No =========================================
+
+[0m
+Column Type     : [31mNumber[0m
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mNameError[0m                                 Traceback (most recent call last)
+[0;32m~/github/Auto_EDA_and_Modeling/EDA-by-column.py[0m in [0;36m<module>[0;34m[0m
+[1;32m    466[0m [0;34m[0m[0m
+[1;32m    467[0m                 [0;32mif[0m [0mtype_[0m [0;34m==[0m [0;34m"Number"[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 468[0;31m                         [0mlocal_cor[0m [0;34m=[0m [0mcor_df[0m[0;34m[[0m[0mcolumn_name[0m[0;34m][0m[0;34m.[0m[0mdrop[0m[0;34m([0m[0mcolumn_name[0m[0;34m)[0m[0;34m.[0m[0mreset_index[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    469[0m                         [0mlocal_cor[0m [0;34m=[0m [0mlocal_cor[0m[0;34m.[0m[0mreindex[0m[0;34m([0m[0mlocal_cor[0m[0;34m[[0m[0mcolumn_name[0m[0;34m][0m[0;34m.[0m[0mabs[0m[0;34m([0m[0;34m)[0m[0;34m.[0m[0msort_values[0m[0;34m([0m[0;34m)[0m[0;34m.[0m[0mindex[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    470[0m                         [0;32mif[0m [0mlocal_cor[0m[0;34m[[0m[0mcolumn_name[0m[0;34m][0m[0;34m.[0m[0mmax[0m[0;34m([0m[0;34m)[0m [0;34m==[0m [0;36m1[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+
+[0;31mNameError[0m: name 'cor_df' is not defined

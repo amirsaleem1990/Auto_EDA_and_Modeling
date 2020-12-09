@@ -1,0 +1,268 @@
+[22;0t]0;IPython: github/Auto_EDA_and_Modeling
+-------------------------
+
+The Data have:
+	933973 rows
+	26 columns
+
+
+-------------------------
+
+Columns types distribution:
+
+int64      14
+float64     6
+object      6
+dtype: int64
+
+
+-------------------------
+
+[31mNow There is no NaN value in our Data[0m
+
+-------------------------
+
+[31mThere are 8 variables That have only one unique value, so we droped those.
+Dropped columns names (in order):[0m
+finance_chgs
+finance_chgs_recv
+installment_chgs
+installment_chgs_recv
+insurance_amt
+insurance_recv
+tracker_chgs
+tracker_chgs_recv
+
+-------------------------
+
+
+Now The Data have:
+	933973 rows
+	18 columns
+
+
+-------------------------
+
+[31mAdded 4 String Features (Extracted from numerical variables)[0m
+
+-------------------------
+
+<Rare case> catagory:
+                              Count   Ratio
+install_no_str                 10.0  0.0011
+installment receiving date    938.0  0.1004
+install_due_date             2077.0  0.2224
+Loan Settelment_Date        60433.0  6.4705
+[31m
+
+
+========================================= install_due_date =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     933973  100.0000
+Nunique                     2573    0.2755
+Len                       933973       NaN
+NA                             0    0.0000
+Most frequent               3770    0.4037
+Least frequent                10    0.0011
+Values occured only once       0    0.0000
+[31m
+
+
+========================================= os_install_flag =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     933973  100.0000
+Nunique                        2    0.0002
+Len                       933973       NaN
+NA                             0    0.0000
+Most frequent             775656   83.0491
+Least frequent            158317   16.9509
+Values occured only once       0    0.0000
+[31m
+
+
+========================================= installment receiving date =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     933973  100.0000
+Nunique                     1999    0.2140
+Len                       933973       NaN
+NA                             0    0.0000
+Most frequent             158318   16.9510
+Least frequent                10    0.0011
+Values occured only once       0    0.0000
+[31m
+
+
+========================================= Status =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     933973  100.0000
+Nunique                        2    0.0002
+Len                       933973       NaN
+NA                             0    0.0000
+Most frequent             573814   61.4380
+Least frequent            360159   38.5620
+Values occured only once       0    0.0000
+[31m
+
+
+========================================= Loan Settelment_Date =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     933973  100.0000
+Nunique                    43374    4.6440
+Len                       933973       NaN
+NA                             0    0.0000
+Most frequent              60433    6.4705
+Least frequent                10    0.0011
+Values occured only once       0    0.0000
+[31m
+
+
+========================================= ProductDescription =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     933973  100.0000
+Nunique                       36    0.0039
+Len                       933973       NaN
+NA                             0    0.0000
+Most frequent             369917   39.6068
+Least frequent                24    0.0026
+Values occured only once       0    0.0000
+[31m
+
+
+========================================= unit_id_str =========================================
+
+[0m
+
+-------------------------
+
+[31mThis Columns is duplicate of <unit_id> column[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     933973  100.0000
+Nunique                      124    0.0133
+Len                       933973       NaN
+NA                             0    0.0000
+Most frequent             106690   11.4232
+Least frequent                12    0.0013
+Values occured only once       0    0.0000
+[31m
+
+
+========================================= sub_proposal_no_str =========================================
+
+[0m
+
+-------------------------
+
+[31mThis Columns is duplicate of <sub_proposal_no> column[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     933973  100.0000
+Nunique                       16    0.0017
+Len                       933973       NaN
+NA                             0    0.0000
+Most frequent             509346   54.5354
+Least frequent                12    0.0013
+Values occured only once       0    0.0000
+[31m
+
+
+========================================= install_no_str =========================================
+
+[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     933973  100.0000
+Nunique                       34    0.0036
+Len                       933973       NaN
+NA                             0    0.0000
+Most frequent             137345   14.7055
+Least frequent                10    0.0011
+Values occured only once       0    0.0000
+[31m
+
+
+========================================= no_of_receipts_str =========================================
+
+[0m
+
+-------------------------
+
+[31mThis Columns is duplicate of <no_of_receipts> column[0m
+Column Type     : [31mObject[0m
+
+-------------------------
+
+                          Counts     Ratio
+Count                     933973  100.0000
+Nunique                        3    0.0003
+Len                       933973       NaN
+NA                             0    0.0000
+Most frequent             543315   58.1725
+Least frequent              2273    0.2434
+Values occured only once       0    0.0000
+[31m
+
+
+========================================= unit_id =========================================
+
+[0m
+
+-------------------------
+
+[31mThis Columns is duplicate of <unit_id_str> column[0m
+Column Type     : [31mNumber[0m
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mNameError[0m                                 Traceback (most recent call last)
+[0;32m~/github/Auto_EDA_and_Modeling/EDA-by-column.py[0m in [0;36m<module>[0;34m[0m
+[1;32m    466[0m [0;34m[0m[0m
+[1;32m    467[0m                 [0;32mif[0m [0mtype_[0m [0;34m==[0m [0;34m"Number"[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 468[0;31m                         [0mlocal_cor[0m [0;34m=[0m [0mcor_df[0m[0;34m[[0m[0mcolumn_name[0m[0;34m][0m[0;34m.[0m[0mdrop[0m[0;34m([0m[0mcolumn_name[0m[0;34m)[0m[0;34m.[0m[0mreset_index[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    469[0m                         [0mlocal_cor[0m [0;34m=[0m [0mlocal_cor[0m[0;34m.[0m[0mreindex[0m[0;34m([0m[0mlocal_cor[0m[0;34m[[0m[0mcolumn_name[0m[0;34m][0m[0;34m.[0m[0mabs[0m[0;34m([0m[0;34m)[0m[0;34m.[0m[0msort_values[0m[0;34m([0m[0;34m)[0m[0;34m.[0m[0mindex[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    470[0m                         [0;32mif[0m [0mlocal_cor[0m[0;34m[[0m[0mcolumn_name[0m[0;34m][0m[0;34m.[0m[0mmax[0m[0;34m([0m[0;34m)[0m [0;34m==[0m [0;36m1[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+
+[0;31mNameError[0m: name 'cor_df' is not defined

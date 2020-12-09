@@ -1,3 +1,4 @@
+# !/usr/bin/python3
 from sklearn.feature_selection import SelectFromModel
 from sklearn.model_selection import train_test_split
 from statsmodels.regression.linear_model import OLS
@@ -6,7 +7,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.linear_model import LinearRegression
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.preprocessing import LabelEncoder
-from pandas_profiling import ProfileReport
+# from pandas_profiling import ProfileReport
 from dateutil import relativedelta
 import matplotlib.pyplot as plt
 from termcolor import colored
@@ -18,14 +19,15 @@ import numpy as np
 import warnings
 import pickle
 import pprint
+import sys
 
 warnings.filterwarnings("ignore")
 
 modeling_   = False
 # modeling_   = True
 
-plot_______ = False
-# plot_______ = True
+# plot_______ = False
+plot_______ = True
 
 summary__   = True
 # summary__   = False
@@ -66,19 +68,22 @@ def cluping_rare_cases_in_one_catagory(x):
 	global df
 	x = df[x]
 	orignal  = x.copy("deep")
-	xx = x.value_counts()
-	xx = xx[xx< 10].index.to_list()
-	x =  x.replace(xx , "Rare cases")
-	if x.value_counts()[-1] < 8:
-		x[x == "Rare cases"] = x.mode()[0] # agar "Rare cases" vali catogery me 8 sy bhi kam values hon to un ko most common value sy replace kar do
-	if x.nunique() == 1:
-		new_line()
-		# to_print = f"The column <{x.name}> have only one unique value, We droped it from the data."
-		to_print = f"The column <{x.name}> have imbalanced, so we droped it, it has {orignal.nunique()} unique values, and most commont value frequency ratio is {(orignal == orignal.mode()[0]).mean()}"
-		print(colored(to_print, 'red'))
-		# return orignal
-		df.drop(columns=x.name, inplace=True)
-		return None
+	try:
+		xx = x.value_counts()
+		xx = xx[xx< 10].index.to_list()
+		x =  x.replace(xx , "Rare cases")
+		if (x.value_counts().size) and (x.value_counts()[-1] < 8):
+			x[x == "Rare cases"] = x.mode()[0] # agar "Rare cases" vali catogery me 8 sy bhi kam values hon to un ko most common value sy replace kar do
+		if x.nunique() == 1:
+			new_line()
+			# to_print = f"The column <{x.name}> have only one unique value, We droped it from the data."
+			to_print = f"The column <{x.name}> have imbalanced, so we droped it, it has {orignal.nunique()} unique values, and most commont value frequency ratio is {(orignal == orignal.mode()[0]).mean()}"
+			print(colored(to_print, 'red'))
+			# return orignal
+			df.drop(columns=x.name, inplace=True)
+			return None
+	except:
+		return orignal
 	return x
 
 def plot_numerical_columns(col_name):
@@ -160,6 +165,12 @@ def plot_catagorical_columns(cat_variable):
 def data_shape():
 	return f"The Data have:\n\t{df.shape[0]} rows\n\t{df.shape[1]} columns\n"
 #===
+# data_file_name = "'" + ' '.join(sys.argv[1:]) + "'"
+# file_name_ = data_file_name.replace("'", "")
+# file_name_ = '/home/amir/github/LFD_projects_2/25-Finca/Data/Repayment Schedule.zip'
+file_name_ = '/home/amir/github/LFD_projects_2/25-Finca/Data/Non Financial Data Set LFD - 2020.zip'
+df = pd.read_csv(file_name_, na_values="(null)")
+
 # df = pd.read_csv("data.csv", date_parser=True)
 
 # df = pd.read_csv("df_only_selected_columns_using_PCA.csv", date_parser=True)
@@ -174,30 +185,35 @@ def data_shape():
 # df = pd.read_csv("cleaned_data.csv", date_parser=True)
 # target_variable = "SalePrice"
 
-train = pd.read_csv("/home/amir/Downloads/train.csv")
-test  = pd.read_csv("/home/amir/Downloads/test.csv")
-target_variable = "SalePrice"
-train_y = train[target_variable]
-train = train.drop(columns=target_variable)
-df = pd.concat([train, test])
-df[target_variable] = train_y.to_list() + [None]*len(test)
+# train = pd.read_csv("/home/amir/Downloads/train.csv")
+# test  = pd.read_csv("/home/amir/Downloads/test.csv")
+# target_variable = "SalePrice"
+# train_y = train[target_variable]
+# train = train.drop(columns=target_variable)
+# df = pd.concat([train, test])
+# df[target_variable] = train_y.to_list() + [None]*len(test)
 #===
 new_line()
 print(data_shape())
 #===
 new_line()
 print(f"Columns types distribution:\n\n{df.dtypes.value_counts()}\n")
-df.dtypes.value_counts().plot(kind='barh', figsize=(10, 2), grid=True, title="Variable types Count Graph");
-plt.xlabel("Count");
-plt.show()
+if plot_______:
+	df.dtypes.value_counts().plot(kind='barh', figsize=(10, 2), grid=True, title="Variable types Count Graph");
+	plt.xlabel("Count");
+	plt.show()
 #===
-f = df[target_variable].isna().sum()
-if f:
-	new_line()
-	to_print = f"There are {f} NAs in target values, we droped those rows"
-	print(colored(to_print, 'red'))
-	df = df[df[target_variable].notna()]
-del f
+try:
+	target_variable # check if variable is initilized or not
+	f = df[target_variable].isna().sum()
+	if f:
+		new_line()
+		to_print = f"There are {f} NAs in target values, we droped those rows"
+		print(colored(to_print, 'red'))
+		df = df[df[target_variable].notna()]
+	del f
+except:
+	pass
 #---------------------------------------------------
 # df.select_dtypes("O").columns[:5]
 # D = df.select_dtypes(exclude="O")
@@ -221,14 +237,15 @@ if a.size:
 
 
 	print("========= NA Graphs =========\n")
-	msno.matrix(df);
-	plt.title("NA Graph");
-	plt.show()
+	if plot_______:
+		msno.matrix(df);
+		plt.title("NA Graph");
+		plt.show()
 
-	new_line()
-	sns.heatmap(df.isnull(), cbar=False);
-	plt.title("NA Graph");
-	plt.show()
+		new_line()
+		sns.heatmap(df.isnull(), cbar=False);
+		plt.title("NA Graph");
+		plt.show()
 #===
 a = a.sort_values()/len(df)*100
 if (a == 100).sum():
@@ -270,34 +287,35 @@ if df.select_dtypes("number").isna().sum().sum():
 	print(f'\n(After filling numeric missing values)\nThere are {df.isna().sum().sum()} Missing values:\n\t{df.select_dtypes("O").isna().sum().sum()} in catagorical variables\n\t{df.select_dtypes("number").isna().sum().sum()} in numerical columns\n\t{df.select_dtypes(exclude=["O", "number"]).isna().sum().sum()} in others')
 #===
 # -------------------------------- Catagoriacal variables imputating
-vars_to_fill = df.select_dtypes("O").isna().mean().where(lambda x:x>0).dropna().sort_values(ascending=True)
-if vars_to_fill.size:
-	for col in vars_to_fill.index:
-		tr = pd.concat([df[[col]], df.loc[:,df.isna().sum() == 0]], 1)
-		tr_y = tr[col]
-		tr_X = tr.drop(columns=col)
-
-		tr_T = tr_X.select_dtypes("number")
-		cat_cols = pd.get_dummies(tr_X.select_dtypes(exclude="number"), prefix_sep="__")
-		tr_T[cat_cols.columns.to_list()] = cat_cols
-
-		tr_T[col] = tr_y
-		tr = tr_T.copy("deep")
-
-		train = tr[tr[col].notna()]
-		test  = tr[tr[col].isna()]
-
-		train_y = train[col]
-		train_X = train.drop(columns=col)
-
-		test_X = test.drop(columns=col)
-
-		clf = DecisionTreeClassifier().fit(train_X, train_y)
-		test_y = clf.predict(test_X)
-
-		df.loc[df[col].isna(), col] = test_y
-	new_line()
-	print(f"Missing values imputed, Now there are {df.isna().sum().sum()} Missing values")
+# to_be_uncommented
+# vars_to_fill = df.select_dtypes("O").isna().mean().where(lambda x:x>0).dropna().sort_values(ascending=True)
+# if vars_to_fill.size:
+# 	for col in vars_to_fill.index:
+# 		tr = pd.concat([df[[col]], df.loc[:,df.isna().sum() == 0]], 1)
+# 		tr_y = tr[col]
+# 		tr_X = tr.drop(columns=col)
+#
+# 		tr_T = tr_X.select_dtypes("number")
+# 		cat_cols = pd.get_dummies(tr_X.select_dtypes(exclude="number"), prefix_sep="__")
+# 		tr_T[cat_cols.columns.to_list()] = cat_cols
+#
+# 		tr_T[col] = tr_y
+# 		tr = tr_T.copy("deep")
+#
+# 		train = tr[tr[col].notna()]
+# 		test  = tr[tr[col].isna()]
+#
+# 		train_y = train[col]
+# 		train_X = train.drop(columns=col)
+#
+# 		test_X = test.drop(columns=col)
+#
+# 		clf = DecisionTreeClassifier().fit(train_X, train_y)
+# 		test_y = clf.predict(test_X)
+#
+# 		df.loc[df[col].isna(), col] = test_y
+# 	new_line()
+# 	print(f"Missing values imputed, Now there are {df.isna().sum().sum()} Missing values")
 # ----------------------------------------------- END Imputing Missing values
 # --------------------------------------------------------- Unique values
 only_one_unique_value = df.nunique().where(lambda x:x == 1).dropna()
@@ -401,14 +419,14 @@ print(f"<Rare case> catagory:\n{xx.to_string()}")
 # ----------------------------------------------------------------------- END (Feature enginearing)
 dtypes = DTYPES()
 # ---------------------------------------------------- Correlation plot
-new_line()
+# new_line()
 cor_df = df.select_dtypes('number').corr().abs()
-mask = np.triu(np.ones_like(cor_df, dtype=bool));
-f, ax = plt.subplots(figsize=(17, 10));
-cmap = sns.color_palette("viridis", as_cmap=True);
-plot_ = sns.heatmap(cor_df, mask=mask, cmap=cmap, vmax=.3, square=True, linewidths=.5, cbar_kws={"shrink": .5});
-plot_.axes.set_title("abs (Correlation) plot",fontsize=25);
-plt.show()
+# mask = np.triu(np.ones_like(cor_df, dtype=bool));
+# f, ax = plt.subplots(figsize=(17, 10));
+# cmap = sns.color_palette("viridis", as_cmap=True);
+# plot_ = sns.heatmap(cor_df, mask=mask, cmap=cmap, vmax=.3, square=True, linewidths=.5, cbar_kws={"shrink": .5});
+# plot_.axes.set_title("abs (Correlation) plot",fontsize=25);
+# plt.show()
 # ---------------------------------------------------------------------
 #===
 if summary__:
@@ -457,13 +475,14 @@ if summary__:
 				print(colored(to_print, 'red'))
 
 			new_line()
-			xm = local_cor[-3:].rename(columns={'index' : 'Column name', column_name : 'Correlation'}).reset_index(drop=True)
-			xm.index = xm['Column name']
-			xm.drop(columns="Column name", inplace=True);
-			xm.plot(kind='barh', grid=True, figsize=(10,1.5));
-			plt.title("Most 3 correlated features with this columns (sorted)", size=14);
-			plt.xlabel("Correlation", size=12);
-			plt.show();
+			if plot_______:
+				xm = local_cor[-3:].rename(columns={'index' : 'Column name', column_name : 'Correlation'}).reset_index(drop=True)
+				xm.index = xm['Column name']
+				xm.drop(columns="Column name", inplace=True);
+				xm.plot(kind='barh', grid=True, figsize=(10,1.5));
+				plt.title("Most 3 correlated features with this columns (sorted)", size=14);
+				plt.xlabel("Correlation", size=12);
+				plt.show();
 
 			new_line()
 			skewness = x.skew(skipna = True)
@@ -586,10 +605,10 @@ if summary__:
 			new_line()
 			plot_date_columns(column_name)
 
-pickle.dump(df, open("df.pkl", "wb"))
-df.to_csv("df.csv", index=False)
-target_variable = "SalePrice"
-open("target_variable.txt", "w").write(target_variable)
+# pickle.dump(df, open("df.pkl", "wb"))
+# df.to_csv("df.csv", index=False)
+# target_variable = "SalePrice"
+# open("target_variable.txt", "w").write(target_variable)
 # ================================================================================================================ Modeling
 # if modeling_:
 # 	# df = pickle.load(open("df.pkl", "rb"))

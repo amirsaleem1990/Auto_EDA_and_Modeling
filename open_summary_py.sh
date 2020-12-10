@@ -1,8 +1,8 @@
 #!/bin/bash
 ipynb-py-convert EDA-by-column.py EDA-by-column.ipynb
 if [[ $? != 0 ]] ; then exit ; fi
-# jupyter nbconvert --to notebook --execute  EDA-by-column.ipynb --output EDA-by-column.ipynb
-ipython3 nbconvert --to notebook --execute  EDA-by-column.ipynb --output EDA-by-column.ipynb
+jupyter nbconvert --to notebook --execute  EDA-by-column.ipynb --output EDA-by-column.ipynb
+# ipython3 nbconvert --to notebook --execute  EDA-by-column.ipynb --output EDA-by-column.ipynb
 if [[ $? != 0 ]] ; then exit ; fi
 jupyter nbconvert --to html EDA-by-column.ipynb
 if [[ $? != 0 ]] ; then exit ; fi

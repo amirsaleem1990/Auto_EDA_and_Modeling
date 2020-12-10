@@ -167,8 +167,8 @@ def data_shape():
 #===
 # data_file_name = "'" + ' '.join(sys.argv[1:]) + "'"
 # file_name_ = data_file_name.replace("'", "")
-# file_name_ = '/home/amir/github/LFD_projects_2/25-Finca/Data/Repayment Schedule.zip'
-file_name_ = '/home/amir/github/LFD_projects_2/25-Finca/Data/Non Financial Data Set LFD - 2020.zip'
+file_name_ = 'Repayment Schedule.zip'
+# file_name_ = 'Non Financial Data Set LFD - 2020.zip'
 df = pd.read_csv(file_name_, na_values="(null)")
 
 # df = pd.read_csv("data.csv", date_parser=True)
@@ -416,6 +416,8 @@ xx = (df == 'Rare cases').sum().sort_values().where(lambda x:x>0).dropna()
 xx = pd.DataFrame({"Count" : xx,
 				"Ratio" : round(xx/len(df)*100, 4)})
 print(f"<Rare case> catagory:\n{xx.to_string()}")
+print("NOTE: wo sab values jo less than 8 times repeat hwi hen un ko 'Rare case' sy replace kar dya h.\n\
+agar <Rare cases> vali catogery me 8 sy bhi kam values hon to 'Rare case` category ko most common value sy replace kar dya h")
 # ----------------------------------------------------------------------- END (Feature enginearing)
 dtypes = DTYPES()
 # ---------------------------------------------------- Correlation plot
@@ -529,11 +531,12 @@ if summary__:
 			# f['Values occured only once count'] = x.value_counts().where(lambda x:x==1).dropna().size
 			# f['Values occured only once Ratio'] = f['Values occured only once count'] / x.count() * 100
 
-			l = x.count(), x.nunique(), len(x), x.isna().sum(), (x == x.mode().values[0]).sum(), (x == x.value_counts().tail(1).index[0]).sum(), x.value_counts().where(lambda x:x==1).dropna().size
-			f = pd.DataFrame(l, index=['Count', 'Nunique', 'Len', 'NA', 'Most frequent', 'Least frequent', 'Values occured only once'], columns=['Counts'])
+			l = x.count(), x.nunique(), x.isna().sum(), (x == x.mode().values[0]).sum(), (x == x.value_counts().tail(1).index[0]).sum(), x.value_counts().where(lambda x:x==1).dropna().size
+			f = pd.DataFrame(l, index=['Count', 'Nunique', 'NA', 'Most frequent', 'Least frequent', 'Values occured only once'], columns=['Counts'])
 			f['Ratio'] = (f.Counts / x.count() * 100).round(4)
-			f.loc[['Len'], 'Ratio'] = None
-
+			f.loc['NA', 'Ratio'] = x.isna().sum() / len(x)
+			f.loc['Counts', 'Ratio'] = None
+			f = f.drop('Count')
 			new_line()
 			print(f.to_string())
 

@@ -93,9 +93,10 @@ def plot_numerical_columns(col_name):
 	# Histogram
 	df[col_name].plot(kind="hist", figsize=(13,8));
 	plt.title(col_name, size=18);
-	plt.axhline(y=df[col_name].mean(), color='red');
-	plt.axhline(y=df[col_name].median(), color='green');
-	plt.legend(['Actual', 'Mean', 'Median']);
+	# y-axis of the histogram is frequency, so we can not draw mean/median line there.	
+	# plt.axhline(y=df[col_name].mean(), color='red');
+	# plt.axhline(y=df[col_name].median(), color='green');
+	# plt.legend(['Actual', 'Mean', 'Median']);
 	plt.show()
 
 	# Scatter plot
@@ -155,6 +156,8 @@ def plot_date_columns(col_name):
 
 def plot_catagorical_columns(cat_variable):
 	if not plot_______:
+		return None
+	if cat_variable.endswith("NA_indicator"):
 		return None
 	(df[cat_variable].value_counts() / len(df) * 100).plot.bar(figsize=(15,6), grid=True);
 	plt.title(cat_variable, size=18, color='r');
@@ -421,14 +424,15 @@ agar <Rare cases> vali catogery me 8 sy bhi kam values hon to 'Rare case` catego
 # ----------------------------------------------------------------------- END (Feature enginearing)
 dtypes = DTYPES()
 # ---------------------------------------------------- Correlation plot
-# new_line()
-cor_df = df.select_dtypes('number').corr().abs()
-# mask = np.triu(np.ones_like(cor_df, dtype=bool));
-# f, ax = plt.subplots(figsize=(17, 10));
-# cmap = sns.color_palette("viridis", as_cmap=True);
-# plot_ = sns.heatmap(cor_df, mask=mask, cmap=cmap, vmax=.3, square=True, linewidths=.5, cbar_kws={"shrink": .5});
-# plot_.axes.set_title("abs (Correlation) plot",fontsize=25);
-# plt.show()
+if plot_______:
+	new_line()
+	cor_df = df.select_dtypes('number').corr().abs()
+	mask = np.triu(np.ones_like(cor_df, dtype=bool));
+	f, ax = plt.subplots(figsize=(17, 10));
+	cmap = sns.color_palette("viridis", as_cmap=True);
+	plot_ = sns.heatmap(cor_df, mask=mask, cmap=cmap, vmax=.3, square=True, linewidths=.5, cbar_kws={"shrink": .5});
+	plot_.axes.set_title("abs (Correlation) plot",fontsize=25);
+	plt.show()
 # ---------------------------------------------------------------------
 #===
 if summary__:
@@ -511,6 +515,7 @@ if summary__:
 			f = pd.DataFrame(ff, index=['Count', 'NA', 'Mean', 'Std', 'Min', '25%', '50%', '75%', 'Max', 'Nunique', 'Outlies', 'Nagetive', 'Zeros'], columns=['Count'])
 			f['Ratio'] = f.Count / x.count() * 100
 			f.loc['Mean' : 'Max', 'Ratio'] = None
+			f.loc['Count', 'Ratio'] = round(len(x)/x.count()*100,3)
 
 			new_line()
 			print(f.round(2).to_string())
@@ -535,7 +540,7 @@ if summary__:
 			f = pd.DataFrame(l, index=['Count', 'Nunique', 'NA', 'Most frequent', 'Least frequent', 'Values occured only once'], columns=['Counts'])
 			f['Ratio'] = (f.Counts / x.count() * 100).round(4)
 			f.loc['NA', 'Ratio'] = x.isna().sum() / len(x)
-			f.loc['Counts', 'Ratio'] = None
+			f.loc['Count', 'Ratio'] = round(len(x)/x.count()*100,3)
 			f = f.drop('Count')
 			new_line()
 			print(f.to_string())

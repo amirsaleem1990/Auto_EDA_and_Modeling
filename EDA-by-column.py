@@ -1,4 +1,4 @@
-# !/usr/bin/python3
+#!/home/amir/github/virtual_envs/auto_eda/bin/python3
 from sklearn.feature_selection import SelectFromModel
 from sklearn.model_selection import train_test_split
 from statsmodels.regression.linear_model import OLS
@@ -170,9 +170,12 @@ def data_shape():
 #===
 # data_file_name = "'" + ' '.join(sys.argv[1:]) + "'"
 # file_name_ = data_file_name.replace("'", "")
-file_name_ = 'Repayment Schedule.zip'
+# file_name_ = 'Repayment Schedule.zip'
 # file_name_ = 'Non Financial Data Set LFD - 2020.zip'
+file_name_ = '/home/amir/github/LFD_projects_2/25-Finca/Data/Repayment Schedule.zip'
 df = pd.read_csv(file_name_, na_values="(null)")
+
+profile = ProfileReport(df, title='Pandas Profiling Report', explorative=True)
 
 # df = pd.read_csv("data.csv", date_parser=True)
 

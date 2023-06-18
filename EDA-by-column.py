@@ -1,4 +1,4 @@
-#!/home/amir/github/virtual_envs/auto_eda/bin/python3
+#!/home/virtual_envs/auto_eda/bin/python3
 from sklearn.feature_selection import SelectFromModel
 from sklearn.model_selection import train_test_split
 from statsmodels.regression.linear_model import OLS
